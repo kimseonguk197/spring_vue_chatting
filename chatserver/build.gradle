@@ -1,0 +1,57 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.1'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+//	jwt토큰 관련 라이브러리 추가
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'  // JSON 처리에 필요
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//	주로, dto값 검증을 위한 어노테이션들 제공
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+//	WebSocket은 클라이언트와 서버 간의 양방향 통신을 가능하게 하는 프로토콜
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+//	STOMP는 메시지 브로커와 클라이언트 간의 메시지 전달을 위한 프로토콜
+	implementation 'org.webjars:stomp-websocket:2.3.4'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

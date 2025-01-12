@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/chatserver?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 1234
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    show_sql: true
+jwt:
+  expiration: 30
+  secretKey: YmV5b25kbXlzZWNyZXRhY2Nlc3N0b2tlbmJleW9uZG15c2VjcmV0YWNjZXNzdG9rZW4=
+  expirationRt: 14400
+  secretKeyRt: YmV5b25kbXlzZWNyZXRyZWZyZXNodG9rZW5iZXlvbmRteXNlY3JldHJlZnJlc2h0b2tlbg==
