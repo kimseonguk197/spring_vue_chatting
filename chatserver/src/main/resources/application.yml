@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/chatdb?useSSL=false
+    username: root
+    password: 1234
+  jpa:
+    database: mysql
+#    InnoDB
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+    show_sql: true
+
+jwt:
+#  chatserversecretaccesstokenchatserversecretaccesstokenchatserversecretaccesstoken
+  secretKey: Y2hhdHNlcnZlcnNlY3JldGFjY2Vzc3Rva2VuY2hhdHNlcnZlcnNlY3JldGFjY2Vzc3Rva2VuY2hhdHNlcnZlcnNlY3JldGFjY2Vzc3Rva2Vu
+  expiration: 3000 # 3000?
